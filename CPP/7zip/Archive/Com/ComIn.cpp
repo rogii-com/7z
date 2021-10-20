@@ -42,7 +42,7 @@ bool CUInt32Buf::Allocate(UInt32 numItems)
 static HRESULT ReadSector(IInStream *inStream, Byte *buf, int sectorSizeBits, UInt32 sid)
 {
   RINOK(inStream->Seek((((UInt64)sid + 1) << sectorSizeBits), STREAM_SEEK_SET, NULL));
-  return ReadStream_FALSE(inStream, buf, (UInt32)1 << sectorSizeBits);
+  return ReadStream_FALSE(inStream, buf, (size_t)1 << sectorSizeBits);
 }
 
 static HRESULT ReadIDs(IInStream *inStream, Byte *buf, int sectorSizeBits, UInt32 sid, UInt32 *dest)

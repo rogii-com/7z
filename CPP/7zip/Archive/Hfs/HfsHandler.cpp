@@ -157,7 +157,7 @@ STDMETHODIMP CHandler::Extract(const UInt32 *indices, UInt32 numItems,
   RINOK(extractCallback->SetTotal(totalSize));
 
   UInt64 currentTotalSize = 0, currentItemSize = 0;
-  
+
   CByteBuffer buf;
   const UInt32 kBufSize = (1 << 16);
   buf.SetCapacity(kBufSize);
@@ -205,7 +205,7 @@ STDMETHODIMP CHandler::Extract(const UInt32 *indices, UInt32 numItems,
         UInt64 rem = item.Size - pos;
         if (rem == 0)
         {
-          if (extentSize >= (UInt64)((UInt32)1 << _db.Header.BlockSizeLog))
+          if (extentSize >= (1ui64 << _db.Header.BlockSizeLog))
             res = NExtract::NOperationResult::kDataError;
           break;
         }

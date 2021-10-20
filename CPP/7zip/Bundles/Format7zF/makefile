@@ -1,7 +1,17 @@
-PROG = 7z.dll
-DEF_FILE = ../../Archive/Archive2.def
-CFLAGS = $(CFLAGS) -I ../../../ \
+
+!IFDEF 7Z_DEBUG
+PROG = 7zd.dll
+CFLAGS = $(CFLAGS) -wd4996  /D "_DEBUG" -Zi -I ../../../ \
   -DEXTERNAL_CODECS \
+
+!ELSE
+PROG = 7z.dll
+CFLAGS = $(CFLAGS) -wd4996 /D "NDEBUG" -Zi -I ../../../ \
+  -DEXTERNAL_CODECS \
+
+!ENDIF
+
+DEF_FILE = ../../Archive/Archive2.def
 
 !IFNDEF UNDER_CE
 CFLAGS = $(CFLAGS) -D_7ZIP_LARGE_PAGES

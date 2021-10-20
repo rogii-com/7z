@@ -605,7 +605,7 @@ HRESULT CInArchive::Open2()
 
   for (UInt32 location = extentVDS.Pos; ; location++)
   {
-    size_t bufSize = 1 << SecLogSize;
+    size_t bufSize = (size_t) 1 << SecLogSize;
     size_t pos = 0;
     RINOK(_stream->Seek((UInt64)location << SecLogSize, STREAM_SEEK_SET, NULL));
     RINOK(ReadStream_FALSE(_stream, buf, bufSize));

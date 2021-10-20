@@ -1257,7 +1257,7 @@ HRESULT CHandler::OpenResources(int sectionIndex, IInStream *stream, IArchiveOpe
   int numBits = _optHeader.GetNumFileAlignBits();
   if (numBits >= 0)
   {
-    UInt32 mask = (1 << numBits) - 1;
+	size_t mask = (1 << numBits) - 1;
     size_t end = ((maxOffset + mask) & ~mask);
     if (end < sect.VSize && end <= sect.PSize)
     {
