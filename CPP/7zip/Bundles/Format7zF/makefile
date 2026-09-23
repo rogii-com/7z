@@ -1,12 +1,12 @@
 !IFDEF 7Z_DEBUG
 PROG = 7zd.dll
-CFLAGS = $(CFLAGS) -wd4996 /D "_DEBUG" -Zi -I ../../../ \
+CFLAGS = $(CFLAGS) -wd4996 -wd4865 /D "_DEBUG" -Zi -I ../../../ \
   -DZ7_EXTERNAL_CODECS \
 
 !ELSE
 PROG = 7z.dll
 # USE_C_LZFINDOPT = 1
-CFLAGS = $(CFLAGS) -wd4996 /D "NDEBUG" -Zi -I ../../../ \
+CFLAGS = $(CFLAGS) -wd4996 -wd4865 /D "NDEBUG" -Zi -I ../../../ \
   -DZ7_EXTERNAL_CODECS \
 
 !ENDIF
